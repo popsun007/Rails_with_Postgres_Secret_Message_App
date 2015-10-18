@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post "/sessions" => "users#checking_in"
 
   get "/users/:id" => "users#show"
+
+  get "/log_out" => "users#log_out"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
