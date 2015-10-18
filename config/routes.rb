@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
 
   root "users#index"
+
   
   get "/sessions/new" => "users#logging_in"
 
   post "/sessions" => "users#checking_in"
 
+  get "/log_out" => "users#log_out"
+
+  get "/users/new" => "users#new"
+
   get "/users/:id" => "users#show"
 
-  get "/log_out" => "users#log_out"
+  post "/users" => "users#create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
