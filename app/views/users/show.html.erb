@@ -1,5 +1,11 @@
 <h3><%= @user.name %> </h3>
 <h3><%= @user.email %></h3>
+<form action="/secrets" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<label for="content">New Secret</label>
+	<textarea id="content" name="content"></textarea>
+	<input type="submit" value="New Secret">
+</form>
 <a href="/users/<%= @user.id %>/edit">Edit Profile</a>
 
 <h4>My secrets:</h4>
