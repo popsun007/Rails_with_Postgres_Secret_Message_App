@@ -1,14 +1,27 @@
 Rails.application.routes.draw do
 
+  get 'secrets/index'
+
+  get 'secrets/new'
+
+  get 'secrets/create'
+
+  get 'secrets/edit'
+
+  get 'secrets/update'
+
+  get 'secrets/destroy'
+
   root "users#index"
 
-  
+  # for log in
   get "/sessions/new" => "users#logging_in"
 
   post "/sessions" => "users#checking_in"
 
   get "/log_out" => "users#log_out"
 
+  # for users
   get "/users/new" => "users#new"
 
   get "/users/:id" => "users#show"
@@ -20,6 +33,9 @@ Rails.application.routes.draw do
   patch "/users/:id" => "users#update"
 
   delete "/users/:id" => "users#destroy"
+
+  # for secrets
+  get "/secrets" => "secrets#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

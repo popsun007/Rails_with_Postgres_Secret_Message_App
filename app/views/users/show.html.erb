@@ -2,3 +2,11 @@
 <h3><%= @user.email %></h3>
 <a href="/users/<%= @user.id %>/edit">Edit Profile</a>
 
+<h4>My secrets:</h4>
+<table>
+<% @secrets.each do |s| %>
+	<tr>
+		<td><%= s.content %></td>
+	</tr>
+<% end %>
+</table>
