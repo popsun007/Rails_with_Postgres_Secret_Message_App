@@ -16,4 +16,9 @@
 
 	<input type="submit" value="Update">
 </form>
+<form action="/users/<%= @user.id %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete Account">
+</form>
 <a href="/users/<%= @user.id %>">Home</a>
