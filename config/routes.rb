@@ -1,21 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'secrets/index'
-
-  get 'secrets/new'
-
-  get 'secrets/create'
-
-  get 'secrets/edit'
-
-  get 'secrets/update'
-
-  get 'secrets/destroy'
-
   root "users#index"
 
   # for log in
-  get "/sessions/new" => "users#logging_in"
+  get "/sessions/new" => "users#index"
 
   post "/sessions" => "users#checking_in"
 

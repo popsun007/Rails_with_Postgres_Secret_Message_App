@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_login, except: [:index, :checking_in, :new, :create]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   def index
   end
 
@@ -31,9 +33,6 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     session[:current_user_id] = nil
     redirect_to "/sessions/new"
-  end
-
-  def logging_in
   end
 
   def checking_in
