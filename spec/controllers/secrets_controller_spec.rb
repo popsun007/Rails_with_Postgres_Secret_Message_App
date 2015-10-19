@@ -6,7 +6,7 @@ RSpec.describe SecretsController, type: :controller do
   end
   describe "when not logged in" do
     before do
-      session[:user_id] = nil
+      session[:current_user_id] = nil
     end
     it "cannot access index" do
       get :index
@@ -17,7 +17,7 @@ RSpec.describe SecretsController, type: :controller do
       expect(response).to redirect_to('/sessions/new')
     end
     it "cannot access destroy" do
-      delete :destroy, id: @secret
+      delete :destroy, id: @secret.id
       expect(response).to redirect_to('/sessions/new')
     end
   end
@@ -29,7 +29,7 @@ RSpec.describe SecretsController, type: :controller do
       @secret = @user.secrets.create(content: 'Ooops')
     end
     it "cannot access destroy" do
-      delete :destroy, id: @secret, user_id: @user
+      delete :destroy, id: @secret.id, user_id: @user.id
       expect(response).to redirect_to("/users/#{@wrong_user.id}")
     end
   end
