@@ -2,17 +2,27 @@
 <h3><%= @user.email %></h3>
 <form action="/secrets" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<label for="content">New Secret</label>
-	<textarea id="content" name="content"></textarea>
-	<input type="submit" value="New Secret">
+	<input type="hidden" name="user_id" value="<%= @user.id %>">
+	<label for="content">New Secret</label><br>
+	<textarea id="content" name="secret[content]"></textarea>
+	<br>
+	<input type="submit" value="Create Secret">
 </form>
+<br>
 <a href="/users/<%= @user.id %>/edit">Edit Profile</a>
 
-<h4>My secrets:</h4>
+<h4>My Secrets:</h4>
 <table>
 <% @secrets.each do |s| %>
 	<tr>
 		<td><%= s.content %></td>
+		<td>
+			<form action="/secrets/<%= s.id %>" method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="Delete">
+			</form>
+		</td>
 	</tr>
 <% end %>
 </table>

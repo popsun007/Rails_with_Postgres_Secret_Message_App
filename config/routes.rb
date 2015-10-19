@@ -37,6 +37,10 @@ Rails.application.routes.draw do
   # for secrets
   get "/secrets" => "secrets#index"
 
+  post "/secrets" => "secrets#create"
+
+  delete "/secrets/:id" => "secrets#destroy"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
