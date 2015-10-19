@@ -16,6 +16,7 @@
 <% @secrets.each do |s| %>
 	<tr>
 		<td><%= s.content %></td>
+		<td><%= s.likes.count %> likes</td>
 		<td>
 			<form action="/secrets/<%= s.id %>" method="post">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
